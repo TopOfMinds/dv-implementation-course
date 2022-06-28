@@ -1,0 +1,77 @@
+{
+    "type": "array",
+    "length": 1,
+    "content": {
+        "type": "object",
+        "customer_id": {
+            "type": "number",
+            "id": {
+              "start_at": 10
+            }
+        },
+        "date": {
+            "type": "date_time",
+            "format": "%Y-%m-%dT%H:%M:%S",
+            "subtype": "naive_date_time",
+            "begin": "2015-01-01T00:00:00",
+            "end": "2020-01-01T12:00:00"
+        },
+        "first_name": {
+            "type": "string",
+            "faker": {
+                "generator": "first_name"
+            }
+        },
+        "last_name": {
+            "type": "string",
+            "faker": {
+                "generator": "last_name"
+            }
+        },
+        "email": {
+            "type": "string",
+            "faker": {
+                "generator": "safe_email"
+            }
+        },
+        "preferred_payment_type": {
+            "type": "string",
+            "categorical": {
+                "credit_card": 5,
+                "paypal": 1,
+                "invoice": 2,
+                "debit_card": 3
+            }
+        },
+        "job": {
+            "type": "string",
+            "faker": {
+                "generator": "profession"
+            }
+        },
+        "cell_number": {
+            "type": "string",
+            "faker": {
+                "generator": "cell_number"
+            }
+        },
+        "address": {
+            "type": "string",
+            "faker": {
+              "generator": "address"
+            }
+        },
+        "city": {
+            "type": "string",
+            "faker": {
+                "generator": "city_name"
+            }
+        },
+        "country": {
+            "type": "string",
+            "faker": {
+                "generator": "country_name"
+            }
+        }
+    }
+}
