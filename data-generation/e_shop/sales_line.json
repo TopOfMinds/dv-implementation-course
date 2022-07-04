@@ -1,0 +1,56 @@
+{
+    "type": "array",
+    "length": 1,
+    "content": {
+        "type": "object",
+        "sales_line_id": {
+            "type": "number",
+            "id": {
+              "start_at": 100
+            }
+        }, 
+        "date": {
+            "type": "date_time",
+            "format": "%Y-%m-%dT%H:%M:%S",
+            "subtype": "naive_date_time",
+            "begin": "2015-01-01T00:00:00",
+            "end": "2020-01-01T12:00:00"
+        },
+        "customer_id": {
+            "type": "same_as",
+            "ref": "customer.content.customer_id"
+        
+        }, 
+
+        "product_id": {
+            "type": "same_as",
+            "ref": "product.content.product_id"
+        
+        }, 
+        "quantity": {
+            "type": "number",
+            "range": {
+                "low": 1,
+                "high": 10
+            }
+        }, 
+        "price": {
+            "type": "number",
+            "range": {
+                "low": 999,
+                "high": 10000, 
+                "step": 100
+            }
+        },
+        "payment_type": {
+            "type": "string",
+            "categorical": {
+                "credit_card": 5,
+                "paypal": 1,
+                "invoice": 2,
+                "debit_card": 3
+            }
+        }
+    }
+}
+        

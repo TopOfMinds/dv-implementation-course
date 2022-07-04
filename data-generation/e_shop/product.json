@@ -9,16 +9,25 @@
               "start_at": 1000
             }
         },
-        "date": {
+       "date": {
             "type": "date_time",
             "format": "%Y-%m-%dT%H:%M:%S",
             "subtype": "naive_date_time",
             "begin": "2015-01-01T00:00:00",
             "end": "2020-01-01T12:00:00"
-        }, 
+        } , 
         "color": {
             "type": "string",
-            "pattern": "(black|white|grey|brown|yellow|red|green|blue|pink)"
-          }
+            "pattern": "(black|white|grey|brown|yellow|red|green|blue|beige)"
+        }, 
+        "product_type": {
+            "type": "string",
+            "pattern": "(couch|chair|armchair|carpet)"
+        }, 
+
+        "product_name": {
+            "type": "string",
+            "pattern": "(GRÖNLID|LANDSKRONA|SÖDERHAMN|EKTORP|KIVIK|VIMLE|ÄPPLARYD|BACKSÄLEN|PÄRUP|LÅNGARYD|KLUBBFORS|VINLIDEN|LINANÄS|VALLENTUNA|KLIPPAN|GLOSTAD|FÄRLÖV|RINGSTORP|BARKTORP|KLINTORP|SPEDTORP)"
+        }
     }
 }

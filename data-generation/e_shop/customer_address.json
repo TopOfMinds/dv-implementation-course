@@ -1,0 +1,36 @@
+{
+    "type": "array",
+    "length": 1,
+    "content": {
+        "type": "object",
+        "customer_id": {
+            "type": "same_as",
+            "ref": "customer.content.customer_id"
+        },
+        "date": {
+            "type": "date_time",
+            "format": "%Y-%m-%dT%H:%M:%S",
+            "subtype": "naive_date_time",
+            "begin": "2015-01-01T00:00:00",
+            "end": "2020-01-01T12:00:00"
+        }, 
+        "address": {
+            "type": "string",
+            "faker": {
+              "generator": "address"
+            }
+        },
+        "city": {
+            "type": "string",
+            "faker": {
+                "generator": "city_name"
+            }
+        },
+        "country": {
+            "type": "string",
+            "faker": {
+                "generator": "country_name"
+            }
+        }
+    }
+}

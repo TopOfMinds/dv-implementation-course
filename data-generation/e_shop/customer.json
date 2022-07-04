@@ -54,24 +54,6 @@
             "faker": {
                 "generator": "cell_number"
             }
-        },
-        "address": {
-            "type": "string",
-            "faker": {
-              "generator": "address"
-            }
-        },
-        "city": {
-            "type": "string",
-            "faker": {
-                "generator": "city_name"
-            }
-        },
-        "country": {
-            "type": "string",
-            "faker": {
-                "generator": "country_name"
-            }
         }
     }
 }
