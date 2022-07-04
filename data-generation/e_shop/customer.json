@@ -43,7 +43,7 @@
                 "debit_card": 3
             }
         },
-        "job": {
+        "occupation": {
             "type": "string",
             "faker": {
                 "generator": "profession"
