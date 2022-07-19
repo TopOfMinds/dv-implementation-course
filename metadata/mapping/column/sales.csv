@@ -4,6 +4,16 @@ datalake,sales_line,sales_line_id,,dv,sale_line_h,sale_line_id
 datalake,sales_line,,current_timestamp(),dv,sale_line_h,load_dts
 datalake,sales_line,,'datalake.sales_line',dv,sale_line_h,rec_src
 
+datalake,sales_line,customer_id,,dv,customer_h,customer_key
+datalake,sales_line,customer_id,,dv,customer_h,customer_id
+datalake,sales_line,,current_timestamp(),dv,customer_h,load_dts
+datalake,sales_line,,'datalake.sales_line',dv,customer_h,rec_src
+
+datalake,sales_line,product_id,,dv,product_h,product_key
+datalake,sales_line,product_id,,dv,product_h,product_id
+datalake,sales_line,,current_timestamp(),dv,product_h,load_dts
+datalake,sales_line,,'datalake.sales_line',dv,product_h,rec_src
+
 datalake,sales_line,sales_line_id|| '|' ||customer_id|| '|' ||product_id,,dv,sale_line_l,sale_line_l_key
 datalake,sales_line,sales_line_id,,dv,sale_line_l,sale_line_key
 datalake,sales_line,customer_id,,dv,sale_line_l,customer_key

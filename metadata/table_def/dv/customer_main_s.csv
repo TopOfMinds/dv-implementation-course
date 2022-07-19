@@ -1,0 +1,9 @@
+name,type
+customer_key,integer
+load_dts,timestamp
+effective_ts,timestamp
+first_name,string
+last_name,string
+email_address,string
+home_phone,string
+rec_src,string

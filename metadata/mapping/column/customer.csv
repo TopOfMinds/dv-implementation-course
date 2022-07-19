@@ -1,0 +1,14 @@
+src_schema,src_table,src_column,transformation,tgt_schema,tgt_table,tgt_column
+datalake,customer,customer_id,,dv,customer_h,customer_key
+datalake,customer,customer_id,,dv,customer_h,customer_id
+datalake,customer,,current_timestamp(),dv,customer_h,load_dts
+datalake,customer,,'datalake.customer',dv,customer_h,rec_src
+
+datalake,customer,customer_id,,dv,customer_main_s,customer_key
+datalake,customer,,current_timestamp(),dv,customer_main_s,load_dts
+datalake,customer,date,,dv,customer_main_s,effective_ts
+datalake,customer,first_name,,dv,customer_main_s,first_name
+datalake,customer,last_name,,dv,customer_main_s,last_name
+datalake,customer,email,,dv,customer_main_s,email_address
+datalake,customer,cell_number,,dv,customer_main_s,home_phone
+datalake,customer,,'datalake.customer',dv,customer_main_s,rec_src

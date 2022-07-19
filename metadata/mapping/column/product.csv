@@ -1,0 +1,13 @@
+src_schema,src_table,src_column,transformation,tgt_schema,tgt_table,tgt_column
+datalake,product,product_id,,dv,product_h,product_key
+datalake,product,product_id,,dv,product_h,product_id
+datalake,product,,current_timestamp(),dv,product_h,load_dts
+datalake,product,,'datalake.product',dv,product_h,rec_src
+
+
+datalake,product,product_id,,dv,product_main_s,product_key
+datalake,product,,current_timestamp(),dv,product_main_s,load_dts
+datalake,product,date,,dv,product_main_s,effective_ts
+datalake,product,product_name,,dv,product_main_s,product_name
+datalake,product,color,,dv,product_main_s,product_color
+datalake,product,,'datalake.product',dv,product_main_s,rec_src
