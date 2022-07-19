@@ -1,0 +1,4 @@
+schema,table,generate,table_type
+dv,sale_line_h,true,view
+dv,sale_line_l,true,view
+dv,sale_line_main_s,true,view

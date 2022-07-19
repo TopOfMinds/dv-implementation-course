@@ -1,0 +1,7 @@
+name,type
+sale_line_key,integer
+load_dts,timestamp
+effective_ts,timestamp
+item_cost,integer
+item_quantity,integer
+rec_src,string

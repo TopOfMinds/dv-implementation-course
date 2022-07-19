@@ -1,0 +1,19 @@
+src_schema,src_table,src_column,transformation,tgt_schema,tgt_table,tgt_column
+datalake,sales_line,sales_line_id,,dv,sale_line_h,sale_line_key
+datalake,sales_line,sales_line_id,,dv,sale_line_h,sale_line_id
+datalake,sales_line,,current_timestamp(),dv,sale_line_h,load_dts
+datalake,sales_line,,'datalake.sales_line',dv,sale_line_h,rec_src
+
+datalake,sales_line,sales_line_id|| '|' ||customer_id|| '|' ||product_id,,dv,sale_line_l,sale_line_l_key
+datalake,sales_line,sales_line_id,,dv,sale_line_l,sale_line_key
+datalake,sales_line,customer_id,,dv,sale_line_l,customer_key
+datalake,sales_line,product_id,,dv,sale_line_l,product_key
+datalake,sales_line,,current_timestamp(),dv,sale_line_l,load_dts
+datalake,sales_line,,'datalake.sales_line',dv,sale_line_l,rec_src
+
+datalake,sales_line,sales_line_id,,dv,sale_line_main_s,sale_line_key
+datalake,sales_line,,current_timestamp(),dv,sale_line_main_s,load_dts
+datalake,sales_line,date,,dv,sale_line_main_s,effective_ts
+datalake,sales_line,price,,dv,sale_line_main_s,item_cost
+datalake,sales_line,quantity,,dv,sale_line_main_s,item_quantity
+datalake,sales_line,,'datalake.sales_line',dv,sale_line_main_s,rec_src

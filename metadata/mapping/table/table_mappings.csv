@@ -1,0 +1,4 @@
+source_schema,source_table,source_filter,target_schema,target_table
+datalake,sales_line,,dv,sale_line_h
+datalake,sales_line,,dv,sale_line_l
+datalake,sales_line,,dv,sale_line_main_s

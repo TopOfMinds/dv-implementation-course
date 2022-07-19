@@ -1,0 +1,5 @@
+name,type
+sale_line_key,integer
+sale_line_id,integer
+load_dts,timestamp
+rec_src,string
