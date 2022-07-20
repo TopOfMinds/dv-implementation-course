@@ -3,3 +3,4 @@ customer_key,integer
 customer_id,integer
 load_dts,timestamp
 rec_src,string
+#generate_type,table

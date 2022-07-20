@@ -5,3 +5,4 @@ effective_ts,timestamp
 item_cost,integer
 item_quantity,integer
 rec_src,string
+#generate_type,table

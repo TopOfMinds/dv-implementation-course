@@ -7,3 +7,4 @@ last_name,string
 email_address,string
 home_phone,string
 rec_src,string
+#generate_type,table

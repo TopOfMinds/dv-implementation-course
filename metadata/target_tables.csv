@@ -1,8 +1,8 @@
-schema,table,generate,table_type
-dv,sale_line_h,true,view
-dv,sale_line_l,true,view
-dv,sale_line_main_s,true,view
-dv,customer_h,true,view
-dv,customer_main_s,true,view
-dv,product_h,true,view
-dv,product_main_s,true,view
+schema,table,generate
+dv,sale_line_h,true
+dv,sale_line_l,true
+dv,sale_line_main_s,true
+dv,customer_h,true
+dv,customer_main_s,true
+dv,product_h,true
+dv,product_main_s,true

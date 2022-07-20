@@ -5,3 +5,4 @@ customer_key,integer
 product_key,integer
 load_dts,timestamp
 rec_src,string
+#generate_type,table

@@ -5,3 +5,4 @@ effective_ts,timestamp
 product_name,string
 product_color,string
 rec_src,string
+#generate_type,table

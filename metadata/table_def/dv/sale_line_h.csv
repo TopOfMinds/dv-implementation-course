@@ -3,3 +3,4 @@ sale_line_key,integer
 sale_line_id,integer
 load_dts,timestamp
 rec_src,string
+#generate_type,table
