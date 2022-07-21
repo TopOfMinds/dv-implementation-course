@@ -38,7 +38,7 @@ def ingestion_time(effective_ts, mean_delay_s=60*60):
     "Ingestion time is based on a Poisson process with a mean 1 hour after effective time"
     return effective_ts + timedelta(seconds=random.expovariate(1) * mean_delay_s)
 
-def generate_custmer_updates(customers, start, end, updates_per_day):
+def generate_customer_updates(customers, start, end, updates_per_day):
     customer_ids = [c["customer_id"] for c in customers]
     customer_dict = {c["customer_id"]: c for c in customers}
     # Make sure that we have an initial update for all customers at time=start
@@ -61,6 +61,45 @@ def generate_custmer_updates(customers, start, end, updates_per_day):
         res = customer_dict[c].copy()
         res.update(update)
         yield res
+    
+def generate_products(n, start_id=0):
+    colors = "black|white|grey|brown|yellow|red|green|blue|beige".split("|")
+    product_types = "couch|chair|armchair|carpet".split("|")
+    product_names = "GRÖNLID|LANDSKRONA|SÖDERHAMN|EKTORP|KIVIK|VIMLE|ÄPPLARYD|BACKSÄLEN|PÄRUP|LÅNGARYD|KLUBBFORS|VINLIDEN|LINANÄS|VALLENTUNA|KLIPPAN|GLOSTAD|FÄRLÖV|RINGSTORP|BARKTORP|KLINTORP|SPEDTORP".split("|")
+    for i in range(n):
+        product = {
+            "product_id": start_id + i,
+            "product_type": fake.random_element(elements=product_types),
+            "product_name": fake.random_element(elements=product_names),
+            "color": fake.random_element(elements=colors),
+            "price": fake.random_int(min=999, max=10000, step=500),
+        }
+        yield product
+
+def generate_sales_lines(customers, products, start, end, sales_per_day):
+    customer_ids = [c["customer_id"] for c in customers]
+    product_ids = [p["product_id"] for p in products]
+    product_price = {p["product_id"]: p["price"] for p in products}
+    print(product_price)
+    ts = time_series(start=start, end=end, updates_per_day=updates_per_day)
+
+    for i, t in enumerate(ts):
+        product_id = fake.random_element(elements=product_ids)
+        quantity = fake.random_int(min=1, max=4, step=1)
+        price = product_price[product_id]
+        sl = {
+            "sales_line_id": i,
+            "date": t.isoformat(),
+            "ingestion_time": ingestion_time(t).isoformat(),
+            "customer_id": fake.random_element(elements=customer_ids),
+            "product_id": product_id,
+            "payment_type": fake.credit_card_provider(),
+            "quantity": quantity,
+            "price": price,
+            "total": quantity * price,
+        }
+        yield sl
+
 
 if __name__ == "__main__":
     customer_n = 10
@@ -70,6 +109,16 @@ if __name__ == "__main__":
     end = datetime.now() - timedelta(days=1)
     updates_per_day = 4
 
-    customer_updates = generate_custmer_updates(customers, start, end, updates_per_day)
-    for cu in customer_updates:
-        print(json.dumps(cu))
+    customer_updates = generate_customer_updates(customers, start, end, updates_per_day)
+    # for cu in customer_updates:
+    #     print(json.dumps(cu))
+
+    products = list(generate_products(10))
+
+    # for p in products:
+    #     print(p)
+
+    sales_per_day = 10
+    sales_lines = generate_sales_lines(customers, products, start, end, sales_per_day)
+    for sl in sales_lines:
+        print(sl)
