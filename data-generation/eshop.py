@@ -5,6 +5,8 @@ import random
 from datetime import datetime, timedelta
 from faker import Faker
 fake = Faker('sv_SE')
+Faker.seed(0)
+random.seed(0)
 
 def time_series(
     start = datetime.now() - timedelta(days=10),
@@ -80,8 +82,7 @@ def generate_sales_lines(customers, products, start, end, sales_per_day):
     customer_ids = [c["customer_id"] for c in customers]
     product_ids = [p["product_id"] for p in products]
     product_price = {p["product_id"]: p["price"] for p in products}
-    print(product_price)
-    ts = time_series(start=start, end=end, updates_per_day=updates_per_day)
+    ts = time_series(start=start, end=end, updates_per_day=sales_per_day)
 
     for i, t in enumerate(ts):
         product_id = fake.random_element(elements=product_ids)
@@ -102,23 +103,33 @@ def generate_sales_lines(customers, products, start, end, sales_per_day):
 
 
 if __name__ == "__main__":
-    customer_n = 10
+    now = datetime.fromisoformat('2022-07-01')
+    start = now - timedelta(days=30)
+    end = now - timedelta(days=1)
+
+    customer_n = 100
     customers = list(generate_customers(customer_n))
 
-    start = datetime.now() - timedelta(days=3)
-    end = datetime.now() - timedelta(days=1)
-    updates_per_day = 4
+    customer_updates_per_day = 10
+    customer_updates = generate_customer_updates(customers, start, end, customer_updates_per_day)
 
-    customer_updates = generate_customer_updates(customers, start, end, updates_per_day)
-    # for cu in customer_updates:
-    #     print(json.dumps(cu))
+    with open("data/customer.jsonl", "w") as f:
+        for cu in customer_updates:
+            f.write(json.dumps(cu))
+            f.write('\n')
 
-    products = list(generate_products(10))
+    product_n = 50
+    products = list(generate_products(50))
 
-    # for p in products:
-    #     print(p)
+    with open("data/product.jsonl", "w") as f:
+        for p in products:
+            f.write(json.dumps(p))
+            f.write('\n')
 
-    sales_per_day = 10
+    sales_per_day = 100
     sales_lines = generate_sales_lines(customers, products, start, end, sales_per_day)
-    for sl in sales_lines:
-        print(sl)
+
+    with open("data/sales_line.jsonl", "w") as f:
+        for sl in sales_lines:
+            f.write(json.dumps(sl))
+            f.write("\n")
